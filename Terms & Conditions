@@ -1,0 +1,38 @@
+<footer class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="serif text-2xl font-bold tracking-tighter mb-4">HHLS <span class="text-blue-600">2026</span></div>
+                    <p class="text-slate-500 max-w-sm mb-6">
+                        The premier mansion-residency for leaders ready to Adapt, Accelerate, and Achieve in the era of Artificial Intelligence. Hilton Head Island, SC.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-slate-400 hover:text-blue-600"><span class="sr-only">LinkedIn</span><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold uppercase text-xs tracking-widest text-slate-900 mb-6">Summit</h4>
+                    <ul class="space-y-4 text-slate-600 text-sm">
+                        <li><a href="#about" class="hover:text-blue-600 transition">The Mansion</a></li>
+                        <li><a href="#curriculum" class="hover:text-blue-600 transition">Curriculum</a></li>
+                        <li><a href="#register" class="hover:text-blue-600 transition">Sponsorships</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold uppercase text-xs tracking-widest text-slate-900 mb-6">Legal</h4>
+                    <ul class="space-y-4 text-slate-600 text-sm">
+                        <li><a href="/terms" class="hover:text-blue-600 transition">Terms & Conditions</a></li>
+                        <li><a href="/privacy" class="hover:text-blue-600 transition">Privacy Policy</a></li>
+                        <li><a href="mailto:your-email@domain.com" class="hover:text-blue-600 transition">Contact Support</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400 uppercase tracking-widest">
+                <p>&copy; 2026 Hilton Head Leadership Summit. All Rights Reserved.</p>
+                <p class="mt-4 md:mt-0 italic text-[10px]">A Solo Prop Production</p>
+            </div>
+        </div>
+    </footer>
