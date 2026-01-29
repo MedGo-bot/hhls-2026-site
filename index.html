@@ -3,111 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HHLS 2026 | Adapt. Accelerate. Achieve.</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>The 2026 Turning Point | Executive Residency Hilton Head</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .serif { font-family: 'Playfair Display', serif; }
-        .hero-gradient { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('YOUR_LIGHTHOUSE_VIDEO_OR_IMAGE_URL'); background-size: cover; background-position: center; }
+        :root {
+            --gold: #D4AF37;
+            --gold-dark: #B8860B;
+            --navy: #001f3f;
+            --dark: #0a0a0a;
+            --light: #f4f4f4;
+        }
+        body { font-family: 'Inter', sans-serif; margin: 0; background-color: var(--dark); color: #fff; line-height: 1.6; }
+        
+        /* Hero Section */
+        header { 
+            padding: 100px 20px; 
+            text-align: center; 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 4px solid var(--gold);
+        }
+        h1 { font-size: 3.5rem; margin: 0; letter-spacing: -1px; font-weight: 800; }
+        .subtitle { font-size: 1.5rem; color: var(--gold); margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; }
+        
+        /* Buttons */
+        .btn-container { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+        .btn { padding: 20px 40px; text-decoration: none; font-weight: 800; text-align: center; border-radius: 2px; transition: 0.3s; min-width: 300px; text-transform: uppercase; }
+        .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #000; box-shadow: 0 10px 30px rgba(212,175,55,0.3); }
+        .btn-navy { background: var(--navy); color: #fff; border: 1px solid var(--navy); }
+        .btn:hover { transform: translateY(-5px); filter: brightness(1.1); }
+        .caption { display: block; font-size: 12px; font-weight: 400; margin-top: 5px; opacity: 0.8; }
+
+        /* The Warning Section */
+        .warning { padding: 80px 20px; background: #000; text-align: center; border-bottom: 1px solid #222; }
+        .warning h2 { color: var(--gold); font-size: 2.5rem; }
+        .warning p { max-width: 800px; margin: auto; font-size: 1.2rem; color: #ccc; }
+
+        /* Boardroom & Deliverable */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; padding: 80px 10%; background: var(--light); color: #000; }
+        .card { background: #fff; padding: 40px; border-left: 8px solid var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .card h3 { margin-top: 0; color: var(--navy); }
+
+        /* Faculty */
+        .faculty { padding: 80px 20px; text-align: center; }
+        .faculty-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 40px; }
+        .member { width: 250px; }
+        .member img { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--gold); background: #222; }
+        
+        footer { padding: 40px; text-align: center; font-size: 0.9rem; color: #666; border-top: 1px solid #222; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body>
 
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="serif text-2xl font-bold tracking-tighter">HHLS <span class="text-blue-600">2026</span></div>
-            <div class="hidden md:flex space-x-8 text-sm font-semibold uppercase tracking-widest">
-                <a href="#about" class="hover:text-blue-600 transition">The Mansion</a>
-                <a href="#curriculum" class="hover:text-blue-600 transition">AAA Curriculum</a>
-                <a href="#ai-hub" class="hover:text-blue-600 transition">AI Hub</a>
-                <a href="#register" class="bg-slate-900 text-white px-5 py-2 rounded-full hover:bg-blue-600 transition">Register</a>
-            </div>
-        </div>
-    </nav>
+<header>
+    <div class="subtitle">October 13-14 | Hilton Head Island</div>
+    <h1>The 2026 Turning Point</h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 20px auto;">300 Executives. 48 Hours. One Physical Roadmap for the AI Era.</p>
+    
+    <div class="btn-container">
+        <a href="https://www.eventbrite.com/e/human-leadership-in-an-ai-era-hilton-head-leadership-summit-2026-tickets-1981895827772" class="btn btn-navy">
+            The Vanguard Pass
+            <span class="caption">Founding Rate: $649.00</span>
+        </a>
+        <a href="https://www.eventbrite.com/e/human-leadership-in-an-ai-era-hilton-head-leadership-summit-2026-tickets-1981895827772" class="btn btn-gold">
+            Executive Residency Pass
+            <span class="caption">The Gold Standard: $1,499.00</span>
+        </a>
+    </div>
+</header>
 
-    <header class="relative h-screen flex items-center justify-center text-center text-white hero-gradient">
-        <div class="max-w-4xl px-6">
-            <h1 class="serif text-5xl md:text-7xl mb-6">Adapt. Accelerate. Achieve.</h1>
-            <p class="text-xl md:text-2xl mb-10 font-light tracking-wide text-slate-200">The 2026 Hilton Head Leadership Summit. An exclusive mansion residency for the future of business.</p>
-            <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <a href="#register" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold text-lg transition shadow-xl">Secure Your Founding Seat</a>
-                <a href="#about" class="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 rounded-lg font-bold text-lg transition">Explore the Experience</a>
-            </div>
-        </div>
-        <div class="absolute bottom-10 animate-bounce">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-        </div>
-    </header>
+<section class="warning">
+    <h2>1999 vs. 2026</h2>
+    <p>In 1999, leaders who "waited to see" if the internet was a fad disappeared. In 2026, the AI Divide will separate the architects from the spectators. This is not a conference; it is an intensive residency to build your survival blueprint.</p>
+</section>
 
-    <section id="curriculum" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="serif text-4xl mb-4 text-slate-800">The AAA Framework</h2>
-                <p class="text-slate-500 max-w-2xl mx-auto italic text-lg">"Human Leadership in an AI Era."</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="p-8 border border-slate-100 rounded-2xl bg-slate-50 hover:shadow-lg transition">
-                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 font-bold text-xl">1</div>
-                    <h3 class="serif text-2xl mb-4">Adapt</h3>
-                    <p class="text-slate-600">Master the mindset shift required to lead through the most significant technological pivot in history.</p>
-                </div>
-                <div class="p-8 border border-slate-100 rounded-2xl bg-slate-50 hover:shadow-lg transition">
-                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 font-bold text-xl">2</div>
-                    <h3 class="serif text-2xl mb-4">Accelerate</h3>
-                    <p class="text-slate-600">Utilize our on-site AI Strategy Hub to automate operations and 10x your executive output.</p>
-                </div>
-                <div class="p-8 border border-slate-100 rounded-2xl bg-slate-50 hover:shadow-lg transition">
-                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 font-bold text-xl">3</div>
-                    <h3 class="serif text-2xl mb-4">Achieve</h3>
-                    <p class="text-slate-600">Lock in your 2026 roadmap during the Sunset Toast at the exclusive Founders’ Dinner.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="grid">
+    <div class="card">
+        <h3>Boardroom Architecture</h3>
+        <p>No theater rows. Every resident is assigned an executive station within our Boardroom Pods, designed for high-stakes peer collaboration and direct faculty access.</p>
+    </div>
+    <div class="card">
+        <h3>The Physical Playbook</h3>
+        <p>You leave with more than notes. You leave with the <b>2026 Executive Roadmap</b>—a physical, hard-bound implementation binder audited by our faculty during the residency.</p>
+    </div>
+</section>
 
-    <section id="register" class="py-24 bg-slate-900 text-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="serif text-4xl mb-4 text-white">Join the Summit</h2>
-                <p class="text-slate-400">Strictly limited to 300 delegates. No hotel ballrooms. Just results.</p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <div class="relative p-10 bg-slate-800 border-2 border-blue-500 rounded-3xl shadow-2xl">
-                    <span class="absolute top-0 right-10 -translate-y-1/2 bg-blue-500 text-white px-4 py-1 rounded-full text-xs font-bold uppercase">Limited: 50 Seats</span>
-                    <h3 class="serif text-3xl mb-2">Founding Member</h3>
-                    <div class="text-4xl font-bold mb-6">$1,499</div>
-                    <ul class="space-y-4 mb-10 text-slate-300">
-                        <li class="flex items-center"><svg class="w-5 h-5 mr-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> The Founders' Dinner</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 mr-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> Guaranteed Mansion Parking</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 mr-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> Private VIP Strategy Wing</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 mr-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> Branded Mansion Slippers</li>
-                    </ul>
-                    <button class="w-full py-4 bg-blue-600 hover:bg-blue-700 rounded-xl font-bold transition">Register as VIP</button>
-                </div>
-                <div class="p-10 bg-slate-800 border border-slate-700 rounded-3xl">
-                    <h3 class="serif text-3xl mb-2">General Delegate</h3>
-                    <div class="text-4xl font-bold mb-6">$649</div>
-                    <ul class="space-y-4 mb-10 text-slate-400">
-                        <li class="flex items-center"><svg class="w-5 h-5 mr-3 text-slate-500" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> Full Day Access</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 mr-3 text-slate-500" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> Luxury Shuttle Service</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 mr-3 text-slate-500" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> Mansion Grounds & Veranda</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 mr-3 text-slate-500" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> Digital Strategy Vault</li>
-                    </ul>
-                    <button class="w-full py-4 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold transition text-white">Register as Delegate</button>
-                </div>
-            </div>
+<section class="faculty">
+    <h2>The Residency Faculty</h2>
+    <div class="faculty-grid">
+        <div class="member">
+            <img src="" alt="Dharam">
+            <h4>Dharam Singh, PMP</h4>
+            <p style="color:var(--gold)">Systems Architect</p>
         </div>
-    </section>
+        <div class="member">
+            <img src="" alt="Dr. Ricky">
+            <h4>Dr. Ricky</h4>
+            <p style="color:var(--gold)">Strategy & Vision</p>
+        </div>
+        <div class="member">
+            <img src="" alt="Jaime">
+            <h4>Jaime Joseph</h4>
+            <p style="color:var(--gold)">Human Capital</p>
+        </div>
+    </div>
+</section>
 
-    <footer class="py-12 bg-white border-t border-slate-200 text-center">
-        <p class="text-slate-400 text-sm tracking-widest uppercase mb-4">&copy; 2026 Hilton Head Leadership Summit. All Rights Reserved.</p>
-        <div class="flex justify-center space-x-6 text-slate-600">
-            <a href="#" class="hover:text-blue-600 transition">Sponsorships</a>
-            <a href="#" class="hover:text-blue-600 transition">Contact</a>
-            <a href="#" class="hover:text-blue-600 transition">Privacy</a>
-        </div>
-    </footer>
+<footer>
+    <p>&copy; 2026 Hilton Head Leadership Residency. All Rights Reserved.</p>
+    <p><a href="mailto:concierge@hiltonheadleadershipsummit.com" style="color:var(--gold); text-decoration:none;">Contact Residency Concierge</a></p>
+</footer>
 
 </body>
 </html>
