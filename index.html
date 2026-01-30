@@ -1,125 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hilton Head Leadership Summit 2026 | Strategic Residency</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>2026 Hilton Head Leadership Summit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              summitBlue: '#4caac9',
+              summitGold: '#d9b161',
+              midnightBlack: '#0a0a0a',
+            },
+            fontFamily: {
+              header: ['Syncopate', 'sans-serif'],
+              serif: ['Cormorant Garamond', 'serif'],
+              sans: ['Montserrat', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
     <style>
-        :root { --gold: #c5a059; --navy: #0a1629; --dark: #040d1a; --white: #ffffff; }
-        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--dark); color: var(--white); line-height: 1.6; }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        
-        header { padding: 40px 20px; text-align: center; border-bottom: 1px solid #1a2433; }
-        .logo { color: var(--gold); font-size: 24px; letter-spacing: 4px; text-transform: uppercase; font-weight: bold; }
-
-        .hero { padding: 100px 20px; text-align: center; background: radial-gradient(circle, #0a1629 0%, #040d1a 100%); }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; color: var(--white); }
-        .hero p { max-width: 800px; margin: 0 auto 40px; font-size: 1.2rem; color: #a0aec0; }
-
-        .vision { padding: 80px 20px; max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .card { background: #0a1629; padding: 30px; border-radius: 8px; border-left: 3px solid var(--gold); }
-        .card h3 { color: var(--gold); margin-top: 0; }
-
-        .faculty { padding: 100px 20px; text-align: center; background: #000; }
-        .faculty-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 1200px; margin: 40px auto; }
-        .member { padding: 20px; border: 1px solid #222; border-radius: 8px; }
-        .member h4 { color: var(--gold); margin: 10px 0 5px; }
-
-        .pricing { background: #040d1a; padding: 100px 20px; text-align: center; }
-        .price-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1300px; margin: 0 auto; align-items: stretch; }
-        
-        .price-card { background: var(--white); color: var(--dark); padding: 30px; border-radius: 8px; width: 320px; display: flex; flex-direction: column; justify-content: space-between; position: relative; border: 1px solid #ddd; }
-        .price-card.featured { background: #0a1629; color: var(--white); border: 2px solid var(--gold); transform: scale(1.05); z-index: 2; }
-        .tag { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--dark); padding: 4px 15px; font-size: 11px; font-weight: bold; border-radius: 20px; }
-        
-        .btn { display: block; padding: 15px; text-decoration: none; font-weight: bold; border-radius: 5px; margin-top: 25px; transition: 0.3s; text-align: center; }
-        .btn-navy { background: var(--dark); color: var(--white); }
-        .btn-gold { background: var(--gold); color: var(--dark); }
-        
-        footer { padding: 60px 20px; text-align: center; border-top: 1px solid #1a2433; color: #718096; }
-        footer a { color: var(--gold); text-decoration: none; }
+      body {
+        background-color: #0a0a0a;
+        color: #ffffff;
+        font-family: 'Montserrat', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .gold-text { color: #d9b161; }
+      .blue-text { color: #4caac9; }
+      
+      /* Smooth transitions for hover states */
+      * { transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
     </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
 </head>
 <body>
-
-<header>
-    <div class="logo">Hilton Head Leadership Summit</div>
-</header>
-
-<section class="hero">
-    <h1>The 2026 Mandate</h1>
-    <p>A high-stakes residency for leaders who refuse to let technology outpace their culture. Master AI integration without sacrificing human excellence.</p>
-    <a href="#pricing" class="btn btn-gold" style="display:inline-block; width: 220px;">Join the Residency</a>
-</section>
-
-<section class="vision">
-    <div class="card">
-        <h3>The Physical Asset</h3>
-        <p>Leave with the 2026 Roadmap Binder—a tangible, audited blueprint for your organization’s next 12 months.</p>
-    </div>
-    <div class="card">
-        <h3>Boardroom Pods</h3>
-        <p>Collaborative architecture sessions. We don't network; we solve high-stakes friction in real-time.</p>
-    </div>
-    <div class="card">
-        <h3>Faculty Council</h3>
-        <p>Direct access to the Amazing 7—world-class experts in AI, negotiation, and human capital.</p>
-    </div>
-</section>
-
-<section id="pricing" class="pricing">
-    <h2 style="color: var(--gold); font-size: 2.5rem; margin-bottom: 50px;">Residency Investment</h2>
-    <div class="price-container">
-        
-        <div class="price-card">
-            <div class="tag">FIRST 50 SEATS</div>
-            <div>
-                <h3>Vanguard Early Bird</h3>
-                <div style="font-size: 2.5rem; font-weight: bold; margin: 15px 0;">$649.99</div>
-                <ul style="text-align: left; list-style: none; padding: 0; font-size: 0.9rem; line-height: 1.8;">
-                    <li>✓ Complete 3-Day Residency</li>
-                    <li>✓ Roadmap Binder Included</li>
-                    <li>✓ Boardroom Pod Access</li>
-                    <li>✓ Founding Member Status</li>
-                </ul>
-            </div>
-            <a href="https://www.eventbrite.com/e/1981895827772?aff=oddtdtcreator" class="btn btn-navy">CLAIM VANGUARD SEAT</a>
-        </div>
-
-        <div class="price-card">
-            <div>
-                <h3>Executive Resident</h3>
-                <div style="font-size: 2.5rem; font-weight: bold; margin: 15px 0;">$1,499.00</div>
-                <ul style="text-align: left; list-style: none; padding: 0; font-size: 0.9rem; line-height: 1.8;">
-                    <li>✓ Complete 3-Day Residency</li>
-                    <li>✓ Roadmap Binder Included</li>
-                    <li>✓ Boardroom Pod Access</li>
-                    <li>✓ All Faculty Keynotes</li>
-                </ul>
-            </div>
-            <a href="https://"https://www.eventbrite.com/e/1981895827772?aff=oddtdtcreator" class="btn btn-navy">SECURE POSITION</a>
-        </div>
-
-        <div class="price-card featured">
-            <div class="tag">LIMITED TO 50</div>
-            <div>
-                <h3 style="color: var(--gold);">Architect's Private Council</h3>
-                <div style="font-size: 2.5rem; font-weight: bold; margin: 15px 0; color: var(--gold);">$3,599.00</div>
-                <ul style="text-align: left; list-style: none; padding: 0; font-size: 0.9rem; line-height: 1.8;">
-                    <li>✓ <strong>1-on-1 Strategy Session</strong></li>
-                    <li>✓ Audited Implementation Plan</li>
-                    <li>✓ Exclusive Council Dinner</li>
-                    <li>✓ Priority Boardroom Placement</li>
-                    <li>✓ All Executive Resident Perks</li>
-                </ul>
-            </div>
-            <a href="https://"https://www.eventbrite.com/e/1981895827772?aff=oddtdtcreator" class="btn btn-gold">JOIN THE COUNCIL</a>
-        </div>
-
-    </div>
-    <p style="font-size: 11px; color: #666; margin-top: 40px;">*Pricing excludes applicable state sales tax and processing fees.</p>
-</section>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
 
 <footer>
     <p>Questions? Contact the Concierge: <a href="mailto:concierge@hiltonheadleadershipsummit.com">info@hiltonheadleadershipsummit.com</a></p>
