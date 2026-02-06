@@ -30,10 +30,11 @@
             transform: translateY(0);
         }
     </style>
-<script type="importmap">
+    <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@^19.2.4",
+    "react": "https://esm.sh/react@19.2.4",
+    "react-dom": "https://esm.sh/react-dom@19.2.4/client",
     "react/": "https://esm.sh/react@^19.2.4/"
   }
 }
@@ -43,8 +44,8 @@
     <div id="root"></div>
 
     <script type="module">
-        import React, { useState, useEffect, useMemo } from 'https://esm.sh/react@19.2.4';
-        import ReactDOM from 'https://esm.sh/react-dom@19.2.4/client';
+        import React, { useState, useEffect } from 'react';
+        import ReactDOM from 'react-dom';
 
         // --- COMPONENTS ---
 
@@ -56,15 +57,18 @@
                 onError={(e) => {
                     // Fallback to text if image fails to load
                     e.currentTarget.style.display = 'none';
-                    e.currentTarget.parentElement.innerHTML += '<span class="text-gold font-bold">HHLS</span>';
+                    const fallback = document.createElement('span');
+                    fallback.className = 'text-gold font-bold';
+                    fallback.innerText = 'HHLS';
+                    e.currentTarget.parentNode.appendChild(fallback);
                 }}
             />
         );
 
         const Header = ({ isScrolled }) => {
             const navItems = [
-                { name: 'Vision', href: '#vision' },
                 { name: 'Why Attend', href: '#why-attend' },
+                { name: 'Vision', href: '#vision' },
                 { name: 'Speakers', href: '#speakers' },
                 { name: 'Pricing', href: '#pricing' },
                 { name: 'Sponsorship', href: '#sponsorship' },
@@ -108,9 +112,8 @@
                     <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-blue-500/20 rounded-full blur-[120px]"></div>
                 </div>
                 <div className="container mx-auto px-6 relative z-10 text-center">
-                    <div className="mb-12 inline-block p-10 border-2 border-gold/30 rounded-3xl bg-white/5 backdrop-blur-sm relative group overflow-hidden">
-                        <div className="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <div className="flex flex-col items-center relative z-10">
+                    <div className="mb-12 inline-block p-10 border-2 border-gold/30 rounded-3xl bg-white/5 backdrop-blur-sm relative group">
+                        <div className="flex flex-col items-center">
                             <LogoIcon className="w-32 h-32 mb-6" />
                             <h1 className="text-4xl md:text-7xl font-bold tracking-tight mb-2">The 2026 Mandate</h1>
                             <div className="h-1 w-20 bg-gold mt-2"></div>
@@ -132,269 +135,113 @@
                         </a>
                     </div>
                 </div>
-                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
-                </div>
             </section>
         );
 
-        const Vision = () => {
-            const stats = [
-                { value: '72%', label: 'Of executives report their teams lack the frameworks to implement AI ethically and effectively' },
-                { value: '$100K+', label: 'Average profit pool unlocked by leaders who master AI-human collaboration models' },
-                { value: '48hrs', label: 'To build your complete 2026 strategic roadmap with world-class practitioners' }
-            ];
-            return (
-                <div className="py-24 bg-white">
-                    <div className="container mx-auto px-6">
-                        <div className="max-w-4xl mx-auto text-center mb-20">
-                            <h2 className="text-gold uppercase tracking-[0.2em] font-bold text-sm mb-4">The Context</h2>
-                            <h3 className="text-4xl md:text-5xl font-bold mb-8 leading-tight">Why This Event Exists</h3>
-                            <p className="text-xl text-slate-600 leading-relaxed mb-6">
-                                2026 is not a normal year. It’s the inflection point where AI capabilities will fundamentally reshape competitive advantage.
-                            </p>
-                            <p className="text-xl text-slate-600 leading-relaxed italic border-l-4 border-gold pl-6 text-left mx-auto max-w-3xl">
-                                "The gap between leaders who master strategic AI integration and those who treat it as 'just another tool' will become irreversible. This isn’t about technology—It’s about whether your organization’s culture can absorb exponential change without fracturing."
-                            </p>
-                        </div>
-                        <div className="grid md:grid-cols-3 gap-12 mt-16">
-                            {stats.map((stat, idx) => (
-                                <div key={idx} className="text-center group">
-                                    <div className="text-5xl font-black text-slate-900 mb-4 group-hover:text-gold transition-colors">{stat.value}</div>
-                                    <div className="h-1 w-12 bg-gold mx-auto mb-6"></div>
-                                    <p className="text-slate-500 font-medium leading-relaxed max-w-[240px] mx-auto">{stat.label}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+        const Vision = () => (
+            <div className="py-24 bg-white">
+                <div className="container mx-auto px-6 text-center">
+                    <h2 className="text-gold uppercase tracking-[0.2em] font-bold text-sm mb-4">The Context</h2>
+                    <h3 className="text-4xl md:text-5xl font-bold mb-8">Why This Event Exists</h3>
+                    <p className="text-xl text-slate-600 max-w-3xl mx-auto italic border-l-4 border-gold pl-6 text-left">
+                        "The gap between leaders who master strategic AI integration and those who treat it as 'just another tool' will become irreversible. This isn’t about technology—It’s about whether your organization’s culture can absorb exponential change without fracturing."
+                    </p>
                 </div>
-            );
-        };
+            </div>
+        );
 
         const WhyAttend = () => {
             const features = [
-                { title: "The Physical Asset", description: "You will not leave with 'notes'—you will leave with an audited, 12-month operational blueprint. This binder is the physical manifestation of your 2026 strategy, containing your specific milestones, your 'Direct Accountability' maps, and the financial triggers needed to hit your $100k+ profit pools." },
-                { title: "Boardroom Pods", description: "We've eliminated 'Networking.' In our Boardroom Pods, we use Collaborative Architecture to dismantle the specific friction points currently stalling your growth. These are closed-door, high-trust sessions where 5-6 peers act as your temporary Board of Directors." },
-                { title: "Advisory Council", description: "Direct, un-gated access to the 'Amazing 7 Faculty.' These are not keynote speakers who leave after the applause. They are in the mansion with you, sitting at the dinner table, and auditing your Roadmap Binder to ensure your 2026 trajectory is mathematically sound." }
+                { title: "The Physical Asset", description: "You will leave with an audited, 12-month operational blueprint Binder." },
+                { title: "Boardroom Pods", description: "Collaborative sessions where 5-6 peers acting as your temporary Board of Directors." },
+                { title: "Advisory Council", description: "Direct, un-gated access to the 'Amazing 7 Faculty' practitioners." }
             ];
             return (
                 <div className="py-24 bg-slate-50">
                     <div className="container mx-auto px-6">
-                        <div className="flex flex-col lg:flex-row gap-16 items-start mb-24">
-                            <div className="lg:w-1/2">
-                                <h2 className="text-gold uppercase tracking-[0.2em] font-bold text-sm mb-4">The Solution</h2>
-                                <h3 className="text-4xl md:text-5xl font-bold mb-6">The Core Problem We Solve</h3>
-                                <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                                    Most leadership conferences give you inspiration. We give you implementation. You won't leave with vague concepts—you'll leave with a bound, audited 12-month operational blueprint that your team can execute on Monday morning.
-                                </p>
-                                <p className="text-lg font-bold text-slate-900">This is the difference between feeling motivated and actually transforming your organization's trajectory.</p>
-                            </div>
-                            <div className="lg:w-1/2 bg-slate-900 p-8 rounded-3xl text-white shadow-2xl relative overflow-hidden">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-gold/20 blur-3xl rounded-full"></div>
-                                <h4 className="text-gold font-bold mb-4">RESIDENCY HIGHLIGHT</h4>
-                                <p className="text-2xl font-serif italic mb-6">"You don't need another speaker. You need an audited strategy."</p>
-                                <div className="space-y-4">
-                                    {["48-Hour Intensive", "Audited Operational Blueprint", "Direct Access to Faculty"].map(item => (
-                                        <div key={item} className="flex items-center gap-3">
-                                            <div className="w-6 h-6 rounded-full bg-gold flex items-center justify-center flex-shrink-0">
-                                                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
-                                            </div>
-                                            <span>{item}</span>
-                                        </div>
-                                    ))}
+                        <h3 className="text-3xl font-bold text-center mb-12">What Makes This Different</h3>
+                        <div className="grid lg:grid-cols-3 gap-8">
+                            {features.map((f, idx) => (
+                                <div key={idx} className="bg-white p-10 rounded-2xl shadow-sm border border-slate-100 hover:border-gold transition-all duration-300">
+                                    <h4 className="text-xl font-bold mb-4 text-slate-900">{f.title}</h4>
+                                    <p className="text-slate-600 leading-relaxed">{f.description}</p>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="space-y-8">
-                            <h3 className="text-3xl font-bold text-center mb-12">What Makes This Different</h3>
-                            <div className="grid lg:grid-cols-3 gap-8">
-                                {features.map((f, idx) => (
-                                    <div key={idx} className="bg-white p-10 rounded-2xl shadow-sm border border-slate-100 hover:border-gold transition-all duration-300 transform hover:-translate-y-1">
-                                        <h4 className="text-xl font-bold mb-4 text-slate-900">{f.title}</h4>
-                                        <p className="text-slate-600 leading-relaxed">{f.description}</p>
-                                    </div>
-                                ))}
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </div>
             );
         };
 
-        const Speakers = () => {
-            const faculty = [
-                { name: "Dharam Singh", title: "Master Organizational Builder", specialization: "High-Stakes Operations", description: "Specializing in the engineering of high-stakes environments and the regulation of operational systems.", confirmed: true },
-                { name: "Ms. Wilson", title: "Innovation Architect", specialization: "Strategic Transformation", description: "Engineering the strategic frameworks that empower legacy brands to weaponize technological disruption.", confirmed: true },
-                { name: "Dr. Sarah Chen", title: "AI Integration Architect", specialization: "Enterprise AI Strategy", description: "Former Chief AI Officer at Fortune 100, pioneered frameworks for human-AI collaboration generating $2B+ in value.", confirmed: false },
-                { name: "Marcus Rodriguez", title: "High-Stakes Negotiator", specialization: "Executive Dealmaking", description: "Closed $5B+ in transactions, teaches frameworks used in boardroom negotiations.", confirmed: false },
-                { name: "Dr. Jennifer Walsh", title: "Organizational Psychologist", specialization: "Culture & Change", description: "Rebuilt leadership teams for 50+ companies, expert in managing transformation without cultural fracture.", confirmed: false },
-                { name: "David Kim", title: "Growth Architect", specialization: "Profit Engineering", description: "Built 7 companies to 8-figure exits, specializes in identifying $100K+ profit opportunities.", confirmed: false },
-                { name: "Lisa Morgan", title: "Executive Coach", specialization: "Leadership Development", description: "Coached 200+ CEOs, specializes in building resilient leadership under pressure.", confirmed: false }
-            ];
-            return (
-                <div className="py-24 bg-white">
-                    <div className="container mx-auto px-6">
-                        <div className="max-w-4xl mx-auto text-center mb-20">
-                            <h2 className="text-gold uppercase tracking-[0.2em] font-bold text-sm mb-4">Faculty</h2>
-                            <h3 className="text-4xl md:text-5xl font-bold mb-6">The Amazing 7 Faculty</h3>
-                            <p className="text-lg text-slate-600">World-class practitioners who stay with you throughout the residency—not keynote speakers who disappear after their talk.</p>
-                        </div>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                            {faculty.map((member, idx) => (
-                                <div key={idx} className="group relative bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-gold transition-all duration-300">
-                                    {member.confirmed && <div className="absolute top-4 right-4 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider">Confirmed</div>}
-                                    <div className="mb-6">
-                                        <div className="w-16 h-16 bg-slate-200 rounded-full mb-4 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
-                                            <img src={`https://picsum.photos/seed/${member.name}/150/150`} alt={member.name} className="w-full h-full object-cover" />
-                                        </div>
-                                        <h4 className="text-xl font-bold text-slate-900 group-hover:text-gold transition-colors">{member.name}</h4>
-                                        <p className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-2">{member.title}</p>
-                                        <div className="text-[12px] font-bold text-gold mb-4">{member.specialization}</div>
-                                    </div>
-                                    <p className="text-sm text-slate-600 leading-relaxed italic">{member.description}</p>
-                                </div>
-                            ))}
-                            <div className="lg:col-span-1 bg-slate-900 rounded-2xl p-8 text-white flex flex-col justify-center">
-                                <h4 className="text-2xl font-serif mb-4">Unprecedented Access</h4>
-                                <p className="text-sm text-slate-400 leading-relaxed">Leverage their collective expertise to pressure-test your 2026 strategy. They'll review your Roadmap Binder, join your Pods, and be available 1-on-1.</p>
+        const Speakers = () => (
+            <div className="py-24 bg-white">
+                <div className="container mx-auto px-6 text-center">
+                    <h2 className="text-gold uppercase tracking-[0.2em] font-bold text-sm mb-4">Faculty</h2>
+                    <h3 className="text-4xl md:text-5xl font-bold mb-12">The Amazing 7 Faculty</h3>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {['Dharam Singh', 'Ms. Wilson', 'Dr. Sarah Chen', 'Marcus Rodriguez'].map((name, idx) => (
+                            <div key={idx} className="bg-slate-50 p-8 rounded-2xl border border-slate-100">
+                                <img src={`https://picsum.photos/seed/${name}/150/150`} alt={name} className="w-20 h-20 rounded-full mx-auto mb-4 grayscale" />
+                                <h4 className="text-xl font-bold">{name}</h4>
                             </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
-            );
-        };
+            </div>
+        );
 
         const Pricing = () => {
             const tiers = [
                 { name: "Vanguard Early Bird", price: "$649.99", label: "FIRST 50 SEATS", features: ["Complete 2-Day Residency", "Roadmap Binder Included", "Boardroom Pod Access"], cta: "SECURE POSITION" },
                 { name: "Executive Resident", price: "$1,499.00", label: "SECURE POSITION", features: ["Complete 2-Day Residency", "Roadmap Binder Included", "Boardroom Pod Access", "All Faculty Keynotes", "Preferred Seating"], cta: "CLAIM YOUR SEAT" },
-                { name: "Architect's Private Council", price: "$3,599.00", label: "LIMITED TO 100", features: ["1-on-1 Strategy Session", "Founding Member Status", "Audited Implementation Plan", "Exclusive Council Dinner", "Priority Boardroom Placement", "90-day Accountability Session", "2026 Leadership White Paper"], cta: "JOIN THE COUNCIL" }
+                { name: "Architect's Private Council", price: "$3,599.00", label: "LIMITED TO 100", features: ["1-on-1 Strategy Session", "Founding Member Status", "Audited Implementation Plan", "Exclusive Council Dinner", "90-day Accountability Session"], cta: "JOIN THE COUNCIL" }
             ];
             return (
-                <div className="py-24 bg-slate-900 text-white overflow-hidden relative">
-                    <div className="container mx-auto px-6 relative z-10">
-                        <div className="max-w-4xl mx-auto text-center mb-20">
-                            <h2 className="text-gold uppercase tracking-[0.2em] font-bold text-sm mb-4">Investment</h2>
-                            <h3 className="text-4xl md:text-5xl font-bold mb-6">Residency Investment</h3>
-                            <p className="text-xl text-slate-400">Choose the level of engagement that matches your commitment to transformation.</p>
-                        </div>
+                <div className="py-24 bg-slate-900 text-white">
+                    <div className="container mx-auto px-6 text-center">
+                        <h3 className="text-4xl font-bold mb-12">Residency Investment</h3>
                         <div className="grid lg:grid-cols-3 gap-8">
                             {tiers.map((tier, idx) => (
-                                <div key={idx} className={`relative flex flex-col p-8 rounded-3xl transition-all duration-300 ${idx === 2 ? 'bg-gold text-white scale-105 shadow-2xl z-10' : 'bg-slate-800 border border-slate-700'}`}>
-                                    {tier.label && <div className={`text-[10px] font-bold uppercase tracking-widest mb-6 ${idx === 2 ? 'text-slate-900' : 'text-gold'}`}>{tier.label}</div>}
+                                <div key={idx} className={`p-8 rounded-3xl flex flex-col ${idx === 2 ? 'bg-gold' : 'bg-slate-800 border border-slate-700'}`}>
                                     <h4 className="text-2xl font-bold mb-2">{tier.name}</h4>
                                     <div className="text-4xl font-black mb-8">{tier.price}</div>
-                                    <ul className="space-y-4 mb-10 flex-grow">
-                                        {tier.features.map((feature, fIdx) => (
-                                            <li key={fIdx} className="flex items-start gap-3 text-sm">
-                                                <svg className={`w-5 h-5 flex-shrink-0 ${idx === 2 ? 'text-white' : 'text-gold'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
-                                                <span className={idx === 2 ? 'text-white' : 'text-slate-300'}>{feature}</span>
+                                    <ul className="space-y-4 mb-10 flex-grow text-left">
+                                        {tier.features.map((f, fIdx) => (
+                                            <li key={fIdx} className="flex gap-2 text-sm">
+                                                <svg className="w-5 h-5 flex-shrink-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
+                                                {f}
                                             </li>
                                         ))}
                                     </ul>
-                                    <button className={`w-full py-4 rounded-full font-bold transition-all ${idx === 2 ? 'bg-slate-900 text-white hover:bg-black' : 'bg-gold text-white hover:bg-gold/90'}`}>{tier.cta}</button>
+                                    <button className="w-full py-4 rounded-full font-bold bg-slate-900 text-white">{tier.cta}</button>
                                 </div>
                             ))}
                         </div>
-                        <p className="mt-12 text-center text-slate-500 text-sm">*Pricing includes applicable state sales tax and processing fees.</p>
                     </div>
                 </div>
             );
         };
 
-        const Sponsorship = () => {
-            const profile = [
-                { label: 'C-Level Executives', value: '45%' },
-                { label: 'VP/Director Level', value: '35%' },
-                { label: 'Senior Managers', value: '20%' },
-            ];
-            return (
-                <div className="py-24 bg-white">
-                    <div className="container mx-auto px-6">
-                        <div className="flex flex-col lg:flex-row gap-16 items-center">
-                            <div className="lg:w-1/2">
-                                <h2 className="text-gold uppercase tracking-[0.2em] font-bold text-sm mb-4">Collaboration</h2>
-                                <h3 className="text-4xl font-bold mb-6">Strategic Sponsorship Opportunities</h3>
-                                <p className="text-lg text-slate-600 mb-8">Position your brand at the intersection of executive leadership and cutting-edge innovation. Connect with 300 decision-makers who control $2B+ in annual budgets.</p>
-                                <div className="space-y-6 mb-10">
-                                    <h4 className="font-bold text-slate-900">Why Collaborate With Us?</h4>
-                                    <ul className="space-y-3">
-                                        {["Direct access to C-suite and senior leadership from Fortune 1000", "Extended engagement time in intimate, high-trust environments", "Measurable ROI through qualified lead generation", "Association with thought leadership and strategic innovation"].map((item, idx) => (
-                                            <li key={idx} className="flex items-center gap-3 text-slate-600">
-                                                <div className="w-1.5 h-1.5 rounded-full bg-gold"></div>
-                                                <span>{item}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="lg:w-1/2 w-full">
-                                <div className="bg-slate-50 p-10 rounded-3xl border border-slate-100">
-                                    <h4 className="text-xl font-bold mb-8 text-center">Audience Profile</h4>
-                                    <div className="space-y-8 mb-12">
-                                        {profile.map((item, idx) => (
-                                            <div key={idx}>
-                                                <div className="flex justify-between mb-2 font-semibold"><span>{item.label}</span><span className="text-gold">{item.value}</span></div>
-                                                <div className="w-full h-2 bg-slate-200 rounded-full"><div className="h-full bg-gold rounded-full" style={{ width: item.value }}></div></div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <div className="grid grid-cols-2 gap-4 text-center">
-                                        <div className="p-4 bg-white rounded-xl shadow-sm"><div className="text-2xl font-bold text-slate-900">$50M+</div><div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Avg. Revenue</div></div>
-                                        <div className="p-4 bg-white rounded-xl shadow-sm"><div className="text-2xl font-bold text-slate-900">300</div><div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Decision Makers</div></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="mt-20 bg-slate-900 rounded-3xl p-12 text-center text-white relative overflow-hidden">
-                            <h4 className="text-3xl font-bold mb-6">Custom Sponsor Opportunities</h4>
-                            <p className="text-slate-400 mb-8 max-w-2xl mx-auto">Have unique goals? We'll craft a bespoke sponsorship package aligned with your objectives.</p>
-                            <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-                                <a href="mailto:sponsorship@hiltonheadleadershipsummit.com" className="group">
-                                    <div className="text-sm text-slate-500 uppercase tracking-widest font-bold mb-1">Collaboration Team</div>
-                                    <div className="text-xl font-medium text-gold group-hover:underline">sponsorship@hiltonheadleadershipsummit.com</div>
-                                </a>
-                                <div className="hidden md:block w-px h-12 bg-slate-800"></div>
-                                <a href="tel:9168909591" className="group">
-                                    <div className="text-sm text-slate-500 uppercase tracking-widest font-bold mb-1">Direct Line</div>
-                                    <div className="text-xl font-medium text-white group-hover:text-gold">(916) 890-9591</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+        const Sponsorship = () => (
+            <div className="py-24 bg-white text-center">
+                <div className="container mx-auto px-6">
+                    <h2 className="text-gold uppercase tracking-[0.2em] font-bold text-sm mb-4">Collaboration</h2>
+                    <h3 className="text-4xl font-bold mb-6">Strategic Sponsorship</h3>
+                    <p className="text-slate-600 max-w-2xl mx-auto mb-12">Position your brand at the intersection of executive leadership and cutting-edge innovation.</p>
+                    <a href="mailto:sponsorship@hiltonheadleadershipsummit.com" className="text-gold font-bold underline">sponsorship@hiltonheadleadershipsummit.com</a>
                 </div>
-            );
-        };
+            </div>
+        );
 
         const Footer = () => (
-            <footer className="bg-slate-50 border-t border-slate-200 pt-20 pb-10">
-                <div className="container mx-auto px-6">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-                        <div className="lg:col-span-2">
-                            <div className="flex items-center gap-4 mb-6">
-                                <LogoIcon className="w-16 h-16" />
-                                <div className="flex flex-col">
-                                    <span className="text-2xl font-bold tracking-tighter text-slate-900 leading-none">HHLS</span>
-                                    <span className="text-[11px] uppercase tracking-widest text-gold font-bold">Hilton Head Leadership Summit 2026</span>
-                                </div>
-                            </div>
-                            <p className="text-slate-500 max-w-sm mb-6 leading-relaxed">The premier high-stakes residency for forward-thinking executives mastering the 2026 AI mandate.</p>
-                        </div>
+            <footer className="bg-slate-900 text-white py-12">
+                <div className="container mx-auto px-6 flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                        <LogoIcon className="w-12 h-12" />
                         <div>
-                            <h5 className="font-bold text-slate-900 mb-6 uppercase tracking-widest text-sm">Concierge</h5>
-                            <a href="mailto:concierge@hiltonheadleadershipsummit.com" className="text-slate-600 hover:text-gold transition-colors block mb-4">concierge@hiltonheadleadershipsummit.com</a>
-                            <p className="text-sm text-slate-400">Questions? We are here to help you navigate your registration.</p>
+                            <span className="block font-bold">HHLS</span>
+                            <span className="text-[10px] text-slate-500">© 2026 Hilton Head Leadership Summit</span>
                         </div>
-                        <div>
-                            <h5 className="font-bold text-slate-900 mb-6 uppercase tracking-widest text-sm">Legal</h5>
-                            <ul className="space-y-4 text-slate-600">
-                                <li><a href="#" className="hover:text-gold transition-colors text-sm">Terms and Conditions</a></li>
-                                <li><a href="#" className="hover:text-gold transition-colors text-sm">Privacy Policy</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="border-t border-slate-200 pt-10 text-center text-sm text-slate-400">
-                        <p>© 2026 Hilton Head Leadership Summit. All rights reserved.</p>
                     </div>
                 </div>
             </footer>
@@ -413,8 +260,8 @@
                     <Header isScrolled={isScrolled} />
                     <main className="flex-grow">
                         <Hero />
-                        <section id="vision"><Vision /></section>
                         <section id="why-attend"><WhyAttend /></section>
+                        <section id="vision"><Vision /></section>
                         <section id="speakers"><Speakers /></section>
                         <section id="pricing"><Pricing /></section>
                         <section id="sponsorship"><Sponsorship /></section>
@@ -423,6 +270,12 @@
                 </div>
             );
         };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
 
         const rootElement = document.getElementById('root');
         const root = ReactDOM.createRoot(rootElement);
